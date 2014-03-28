@@ -13,7 +13,7 @@ public class Tp5Client {
     public static void main(String[] args) throws Exception {
         
         Scanner sc = new Scanner(System.in);
-        Socket socket = new Socket("localhost", 4444);
+        Socket socket = new Socket("172.16.238.238", 4444);
         //Socket socket = new Socket("127.0.0.1", 4444);
         //to get the ip address
         System.out.println((java.net.InetAddress.getLocalHost()).toString());
@@ -36,19 +36,18 @@ public class Tp5Client {
             String Lname = sc.nextLine();
            
             StringBuilder Identity = new StringBuilder();
-            Identity.append(Fname).append("|").append(Lname);
+            Identity.append(Fname).append("---").append(Lname);
             outSocket.println(Identity.toString());
             
-            String ListePiece = inSocket.readLine();
-            String ListAndSlot [] = ListePiece.split("|");
-            
+            String ListPiece = inSocket.readLine();
+            String ListAndSlot[] = ListPiece.split("---");
             System.out.println ("Choississez votre pièce");
-            for (int i = 0; i < ListAndSlot.length-1 ; i++) {
-                
+            for (int i = 0; i < ListAndSlot.length ; i++) {
+                System.out.println(ListAndSlot[i]);
                 String name = ListAndSlot[i].split("-nb-")[0];
                 String Slot = ListAndSlot[i].split("-nb-")[1];
                 
-                System.out.println ("tapez "+ i+1 +" pour la pièce "+ name +"(Il reste pour cette piece "+ Slot +" places");
+                System.out.println ("tapez "+ i +" pour la pièce "+ name +"(Il reste pour cette piece "+ Slot +" places)");
                 
             }
             
@@ -57,7 +56,8 @@ public class Tp5Client {
             String NbSlotTaken = sc.nextLine();
             
             StringBuilder Reservation = new StringBuilder();
-            Reservation.append(Numpiece).append("|").append(NbSlotTaken);
+            Reservation.append(Numpiece).append("---").append(NbSlotTaken);
+            System.out.println(Reservation);
             outSocket.println(Reservation.toString());
             
             

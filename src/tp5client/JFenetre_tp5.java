@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public final class JFenetre_tp5 extends JFrame { 
  
-    public static int FENETRE_INT = 500;
+    public static int FENETRE_INT = 300;
     
     
 public JFenetre_tp5() { //Permet de créer la fenêtre et les éléments de base
